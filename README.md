@@ -54,7 +54,7 @@ The second notebook takes as input the compacted data and performs the analysis 
 
 In the following chart, the red line represent the 100% completness.
 
-![Alt text](./visualizations/boxplot_custom_border.png)
+![Alt text](./visualizations/completeness_by_level_and_goal.png)
 
 <!-- ![Alt text](./visualizations/output.png) -->
 
