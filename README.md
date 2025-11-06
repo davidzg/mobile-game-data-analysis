@@ -39,12 +39,11 @@ The log data contains information that is not of interest for this project, and 
 |n_bananas|numbers of bananas collected by the end of the attempt|
 |n_distance|distance advanced by the end of the attempt|
 |n_specialcollectibles|number of special collectibles collected by the end of the attempt|
-|n_swings|number of swings left over by the end of the attempt|
+|n_swings|number of swings done by the end of the attempt|
 |pathtrace|A set of coordinates that traces the path the character has travelled during the attempt|
 |stars|number of stars earned in this attempt|
 |swings_left|number of swings left over by the end of the attempt|
 |time_used|duration of the attempt|
-|total_duration|duration of the attempt|
 |score|final score|
 ## Analysis
 There are two notebooks. The first one takes the raw logs files and transforms it into a more maneagable dataset with the columns of interest for this project. In this process there is also some data cleaning and formatting.
