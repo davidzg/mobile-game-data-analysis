@@ -71,9 +71,9 @@ The analysis was performed on two primary datasets:
 ---
 
 ## Environment & Data Access
-The raw telemetry data used in this analysis (approx. [X] GB) is excluded from this repository for performance and privacy reasons.
+The raw telemetry data used in this analysis is excluded from this repository for performance and privacy reasons.
 
 **To review the logic and methodology:**
-* **[Notebook 1](EDA.ipynb):** ETL pipeline, data type optimization, and coordinate string handling.
-* **[Notebook 2](Prepare_dataframe.ipynb):** Statistical analysis and visualization suite.
+* **[01_data_cleaning_and_validation.ipynb](01_data_cleaning_and_validation.ipynb):** ETL pipeline, data type optimization, and coordinate string handling.
+* **[02_exploratory_data_analysis.ipynb](02_exploratory_data_analysis.ipynb):** Statistical analysis and visualization suite.
 * **Requirements:** See `requirements.txt` for the specific versions of Pandas and Scipy used to ensure reproducibility.
