@@ -1,73 +1,79 @@
-# mobile-game-data-analysis
-Game progression analysis of a mobile game
-## Introduction
-In this project I am performing an Exploratory data analysis from a mobile game.
-The questions to answer with this project are:
-1. How engaging are the levels? are they fun and challenging?
-2. Which levels would need a rebalance to offer a better user experience
+# Jungle Vine Runner: Level Balancing & Player Retention Analysis
+
+**Project Goal:** Identify friction points in the difficulty curve of a mobile platformer to optimize player engagement and prevent churn.
+
+---
+
+## Executive Summary
+This project analyzes player telemetry data from the first 50 levels o of a live mobile title. By evaluating level completeness across different goal types, I identified key **difficulty spikes** and **boredom traps** that negatively impact the First Time User Experience (FTUE) and identify specific level configurations causing **player friction** and potential **churn**. 
+
+**Key Outcome:** Recommended specific rebalancing for 10+ levels to align the game with a "Flow State" difficulty curve.
 
 
-### About the game
-"Jungle Vine Runner" is a fictional game where players control a character that swings on vines and collects bananas and other special collectibles. The game is divided in consecutive levels, and each one has its own Goal and restrictions. This project only will analyse the first 50 levels.
+---
+## About the Data Source
+**Project Codename:** *Jungle Vine Runner*
 
-### About the data
-#### Source data
-- The data used for this project are the game logs for one day.
-- The data has been annonymized.
-#### meatadata
-The "levels.csv" file contains each level's configuration, like the goal and restrictions that apply for the specific level. This file is used as the point of comparison to estimate how well the players has played an specific attempt. Here is the structure of this data:
+The data used in this analysis is derived from a live mobile platformer. To maintain data privacy and adhere to confidentiality standards, the specific game title and user identifiers have been anonymized. The game features momentum-based progression across 50+ levels with varying goal types (Collection, Distance, and Time-based).
 
-|Column |Description    |
-|-----|----|
-|lvl|Level number|
-|goal_type|There three types of goal: Collect bananas,reach a distance, or collect special collectibles|
-|goal_value|The goal value to meet|
-|limit_type|There are two types of restriction: Time restriction, Swings restriction|
-|limit_value|The restricition value to meet|
-|target_goal|Collecting objects will increase the scoring. Players must meet the specific score in order to win the level.|
+---
 
-The "logs.csv" file stores logs about each attempt to complete a level.
-The log data contains some information that is not of interest for this project, and it is cleaned or discarded during the EDA process. The prepared and cleaned data is stored in the "logs.csv" and is structured as follow:
+## Key Insights & Results
 
-|Column |Description    |
-|-----|----|
-|device_id|Unique id to identify the user|
-|date_time| log date and time|
-|level_number|Level number played (1-50)|
-|end_reason|win ('win') or fail ('time' or 'swings')|
-|lives_left|lives left by the end of the attempt|
-|n_bananas|numbers of bananas collected by the end of the attempt|
-|n_distance|distance advanced by the end of the attempt|
-|n_specialcollectibles|number of special collectibles collected by the end of the attempt|
-|n_swings|number of swings done by the end of the attempt|
-|pathtrace|A set of coordinates that traces the path the character has travelled during the attempt|
-|stars|number of stars earned in this attempt|
-|swings_left|number of swings left over by the end of the attempt|
-|time_used|duration of the attempt|
-|score|final score|
-## Analysis
-There are two notebooks. The first one takes the raw logs files and transforms it into a more maneagable dataset with the columns of interest for this project. In this process there is also some data cleaning and formatting.
-The second notebook takes as input the compacted data and performs the analysis by filtering, grouping and shaping the data, to finally generate some visualizations to help to understand the data and extract the insights.
 
-## Results
-
-In the following chart, the red line represent the 100% completness.
+To identify problematic levels, We visualized the **Completeness Percentage** (Actual Progress / Target Goal). We define an engaging level as one where the median completeness (green line) sits near the 100% threshold (red line), indicating it is "challenging but achievable."
+Levels where the IQR falls entirely below the red line are candidates for difficulty reduction.
 
 ![Alt text](./visualizations/completeness_by_level_and_goal.png)
 
-<!-- ![Alt text](./visualizations/output.png) -->
 
-We can define an engaging level as one where the median (green line of each boxplot) of completeness is close to 100% (red line). Meaning the level difficulty feels right, challenging but achievable. 
-It is also important to keep the IQR (inter-quartile range) of the boxplot intersecting the red line.
+### 1. The Level 20 "Wall"
+Levels involving **banana collection** show a drastic drop in completeness after Level 20. This indicates a sudden difficulty spike that may lead to player frustration and early churn.
+* **Risk**: This creates a "wall" that likely triggers high churn rates for players finishing their first session.
+### 2. FTUE Imbalance (Level 15)
+Levels 11,12 and 15 are statistically outliers for the early game. The median completeness sits significantly above 100%, and the IQR entirely avobe the 100% line suggests almost no challenge across all skill levels. 
+* **Risk:** High-skill players may perceive the game as "too easy" and lose interest during the critical retention window.
 
-### insights
-- With the definitions in mind, the obvious observation is that early levels feel engaging and sometimes easy (levels 1,2, 11, 12), this is intended to have this difficulty as it represent the FTUE (first time user experience) content.
-- Level 15 has a wide boxplot, indicating the variety of player skills. the IQR is above the 100% completeness, indicating that this level is too easy, and potentially boring to users.
-    - The same conclusion could be said about levels 12, 17 and 21.
-- There are also levels that are too challenging as their IQR is below 100%, these levels 
-- levels where the goal is to collect special colletibles are generally on the difficult side.
-- Levels where the goal is to collect bananas become harder asfter level 20.
+### 3. Mechanic-Specific Friction
+Levels centered on **"Special Collectibles"** are consistently under-performing in success rates compared to "Distance" or "Banana" goals. This suggests the spawn rate or placement of these items is currently tuned too high for the average player.
 
-### Recomendations
-- Rebalance the levels where the goal is to collect special collectibles to make them easier, this can be done by adding more collectibles to the map.
-- Level 15 can be made more challenging, as it is still part of the FTUE it is recommended to keep it on the Easy difficulty still.
+---
+
+## Recommendations
+
+| Level(s) | Issue | Proposed Action |
+| :--- | :--- | :--- |
+| **11, 12, 15** | Low Challenge | Increase `goal_value` by 20% to maintain engagement. |
+| **20-30** | Difficulty Spike | Increase `limit_value` (swings/time) to soften the learning curve. |
+| **Collectibles** | High Friction | Increase item density or implement "pity spawns" to boost completeness. |
+
+---
+
+## Methodology & Tech Stack
+
+* **Data Cleaning:** Handled raw logs to remove corrupted sessions and anonymized user IDs.
+* **Feature Engineering:** Calculated "Completeness Percentage" by normalizing `actual_value` against `target_goal`.
+* **Analysis:** Utilized Boxplot distributions to identify variance in player skill vs. level difficulty.
+
+**Tools Used:**
+* **Python (Pandas/NumPy):** Data manipulation and cleaning.
+* **Seaborn/Matplotlib:** Statistical visualization.
+* **Jupyter Notebooks:** Documentation of the EDA process.
+
+---
+
+## Data Dictionary
+The analysis was performed on two primary datasets:
+1.  **levels.csv**: Configuration data (goals, limits, and target scores).
+2.  **logs.csv**: Player-level telemetry (1-day snapshot) including `device_id`, `end_reason`, and `pathtrace` coordinates.
+
+
+---
+
+## Environment & Data Access
+The raw telemetry data used in this analysis (approx. [X] GB) is excluded from this repository for performance and privacy reasons.
+
+**To review the logic and methodology:**
+* **[Notebook 1](EDA.ipynb):** ETL pipeline, data type optimization, and coordinate string handling.
+* **[Notebook 2](Prepare_dataframe.ipynb):** Statistical analysis and visualization suite.
+* **Requirements:** See `requirements.txt` for the specific versions of Pandas and Scipy used to ensure reproducibility.
