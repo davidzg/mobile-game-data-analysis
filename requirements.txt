@@ -1,0 +1,11 @@
+# --- Core Data Stack ---
+pandas==2.2.3
+numpy==2.2.6
+
+# --- Visualization ---
+matplotlib==3.10.7
+seaborn==0.13.2
+
+# --- Notebook Environment ---
+ipykernel==6.29.5
+
