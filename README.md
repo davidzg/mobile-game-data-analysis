@@ -4,7 +4,7 @@ Game progression analysis of a mobile game
 In this project I am performing an Exploratory data analysis from a mobile game.
 The questions to answer with this project are:
 1. How engaging are the levels? are they fun and challenging?
-2. Which levles would need a rebalance to offer a better user experience
+2. Which levels would need a rebalance to offer a better user experience
 
 
 ### About the game
@@ -13,9 +13,9 @@ The questions to answer with this project are:
 ### About the data
 #### Source data
 - The data used for this project are the game logs for one day.
-- The data has been annonymised.
+- The data has been annonymized.
 #### meatadata
-The "levels.csv" file contains each level's configuration, like the goal and restrictions that applay for the specific level. This file is the point of comparison to estimate how well the players has played an specific attempt. Here is the structure of this data:
+The "levels.csv" file contains each level's configuration, like the goal and restrictions that apply for the specific level. This file is used as the point of comparison to estimate how well the players has played an specific attempt. Here is the structure of this data:
 
 |Column |Description    |
 |-----|----|
@@ -24,10 +24,10 @@ The "levels.csv" file contains each level's configuration, like the goal and res
 |goal_value|The goal value to meet|
 |limit_type|There are two types of restriction: Time restriction, Swings restriction|
 |limit_value|The restricition value to meet|
-|target_goal|Collecting objects will increase the scoring. Players must meet the specific scoreing in order to win the level.|
+|target_goal|Collecting objects will increase the scoring. Players must meet the specific score in order to win the level.|
 
 The "logs.csv" file stores logs about each attempt to complete a level.
-The log data contains information that is not of interest for this project, and is cleaned or discarded during the EDA process. The prepared and cleaned data is stored in the "logs.csv" and is structured as follow:
+The log data contains some information that is not of interest for this project, and it is cleaned or discarded during the EDA process. The prepared and cleaned data is stored in the "logs.csv" and is structured as follow:
 
 |Column |Description    |
 |-----|----|
