@@ -5,7 +5,7 @@
 ---
 
 ## Executive Summary
-This project analyzes player telemetry data from the first 50 levels o of a live mobile title. By evaluating level completeness across different goal types, I identified key **difficulty spikes** and **boredom traps** that negatively impact the First Time User Experience (FTUE) and identify specific level configurations causing **player friction** and potential **churn**. 
+This project analyzes player telemetry data from the first 50 levels of a live mobile title. By evaluating level completeness across different goal types, I identified key **difficulty spikes** and **boredom traps** that negatively impact the First Time User Experience (FTUE) and identify specific level configurations causing **player friction** and potential **churn**. 
 
 **Key Outcome:** Recommended specific rebalancing for 10+ levels to align the game with a "Flow State" difficulty curve.
 
