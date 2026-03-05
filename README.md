@@ -5,7 +5,7 @@
 ---
 
 ## Executive Summary
-This project analyzes player telemetry data from the first 50 levels of a live mobile title. By evaluating level completeness across different goal types, I identified key **difficulty spikes** and **boredom traps** that negatively impact the First Time User Experience (FTUE) and identify specific level configurations causing **player friction** and potential **churn**. 
+This project analyzes player telemetry data from the first 50 levels of a live mobile title. By evaluating level completeness across different goal types, I identified key **difficulty spikes** and **boredom traps** that negatively impact the First Time User Experience (FTUE) and spotted specific level configurations causing **player friction** and potential **churn**. 
 
 **Key Outcome:** Recommended specific rebalancing for 10+ levels to align the game with a "Flow State" difficulty curve.
 
@@ -21,7 +21,7 @@ The data used in this analysis is derived from a live mobile platformer. To main
 ## Key Insights & Results
 
 
-To identify problematic levels, We visualized the **Completeness Percentage** (Actual Progress / Target Goal). We define an engaging level as one where the median completeness (green line) sits near the 100% threshold (red line), indicating it is "challenging but achievable."
+To identify problematic levels, I visualized the **Completeness Percentage** (Actual Progress / Target Goal). We define an engaging level as one where the median completeness (green line) sits near the 100% threshold (red line), indicating it is "challenging but achievable."
 Levels where the IQR falls entirely below the red line are candidates for difficulty reduction.
 
 ![Alt text](./visualizations/completeness_by_level_and_goal.png)
@@ -31,11 +31,11 @@ Levels where the IQR falls entirely below the red line are candidates for diffic
 Levels involving **banana collection** show a drastic drop in completeness after Level 20. This indicates a sudden difficulty spike that may lead to player frustration and early churn.
 * **Risk**: This creates a "wall" that likely triggers high churn rates for players finishing their first session.
 ### 2. FTUE Imbalance (Level 15)
-Levels 11,12 and 15 are statistically outliers for the early game. The median completeness sits significantly above 100%, and the IQR entirely avobe the 100% line suggests almost no challenge across all skill levels. 
+Levels 11, 12 and 15 are statistically outliers for the early game. The median completeness sits significantly above 100%, and the IQR entirely above the 100% line suggests almost no challenge across all skill levels. 
 * **Risk:** High-skill players may perceive the game as "too easy" and lose interest during the critical retention window.
 
 ### 3. Mechanic-Specific Friction
-Levels centered on **"Special Collectibles"** are consistently under-performing in success rates compared to "Distance" or "Banana" goals. This suggests the spawn rate or placement of these items is currently tuned too high for the average player.
+Levels centered on **"Special Collectibles"** are consistently underperforming in success rates compared to "Distance" or "Banana" goals. This suggests the spawn rate or placement of these items is currently tuned too high for the average player.
 
 ---
 
@@ -76,4 +76,4 @@ The raw telemetry data used in this analysis is excluded from this repository fo
 **To review the logic and methodology:**
 * **[01_data_cleaning_and_validation.ipynb](01_data_cleaning_and_validation.ipynb):** ETL pipeline, data type optimization, and coordinate string handling.
 * **[02_exploratory_data_analysis.ipynb](02_exploratory_data_analysis.ipynb):** Statistical analysis and visualization suite.
-* **Requirements:** See `requirements.txt` for the specific versions of Pandas and Scipy used to ensure reproducibility.
+* **Requirements:** See `requirements.txt` for the specific versions of Pandas and SciPy used to ensure reproducibility.
