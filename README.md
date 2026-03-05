@@ -1,5 +1,7 @@
 # Jungle Vine Runner: Level Balancing & Player Retention Analysis
 
+**[Read the Executive Summary for Stakeholders](reports/Executive_Summary.md)** 
+
 **Project Goal:** Identify friction points in the difficulty curve of a mobile platformer to optimize player engagement and prevent churn.
 
 ---
